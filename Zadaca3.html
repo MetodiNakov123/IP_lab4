@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadaca3</title>
+
+    <style>
+        label {
+            width: 57px;
+            display: inline-block;
+        }
+        input[type=button]{
+            position: relative;
+            width: 70px;
+            left: 12.5%;
+        }
+        div {
+            margin-bottom: 10px;
+        }
+    </style>
+    
+    <script>
+        function promeni() {
+            let color = document.getElementById("Color");
+            let image = document.getElementById("Image");
+
+            let value = document.getElementById("value").value;
+
+            if (value == ""){
+                alert("Value poleto e zadlzitelno!!!");
+                return;
+            }
+
+            if (color.checked){
+                document.body.style.background = value;
+            }
+
+            if (image.checked){
+                document.body.style.backgroundImage = "url("+value+")";
+            }
+
+            document.getElementById("value").value = "";
+            // https://images.pexels.com/photos/1227520/pexels-photo-1227520.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+        }
+        
+    </script>
+    
+</head>
+<body>
+
+    <h2>Промена на позадина</h2>
+
+    <input type="radio" id="Color" name="ime" value="Color" checked/> Color
+    <input type="radio" id="Image" name="ime" value="Image"/> Image <br/> <br/>
+
+    <div>
+        <label>Value: </label>
+        <input type="text" id="value">
+    </div>
+
+    <div>
+        <input type="button" value="Промени" onclick="promeni()">
+    </div>
+
+
+</body>
+</html>

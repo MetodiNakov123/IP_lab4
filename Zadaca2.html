@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadaca2</title>
+
+    <style>
+        label {
+            width: 57px;
+            display: inline-block;
+        }
+        input[type=button]{
+            position: relative;
+            width: 70px;
+            left: 12.5%;
+        }
+        div {
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <script>
+
+        function prikazi() {
+
+            var items = document.getElementById("items").value;
+            var type = document.getElementById("type").value;
+
+            if (items == ""){
+                alert("Items e zadolzitelno za popolnuvanje!!!");
+                return;
+            }
+
+
+            var container = document.getElementById("container");
+            container.innerHTML = "";
+
+            var arrayItems = items.split(",");
+
+            for(let i=0; i<arrayItems.length; i++){
+                let element = document.createElement("input");
+                element.setAttribute('type', type);
+                element.setAttribute('name', "klasa");
+                var text = document.createTextNode(arrayItems[i]);
+                container.appendChild(element);
+                container.appendChild(text);
+            }
+
+
+            //document.getElementById("items").value = "";
+        }
+        
+    </script>
+
+</head>
+<body>
+
+<div>
+    <label>Items:</label>
+    <input type="text" id="items"/>
+</div>
+
+<div>
+    <label>Type:</label>
+    <select id="type">
+        <option value="Radio">Radio button</option>
+        <option value="Checkbox">Check box</option>
+    </select>
+
+</div>
+
+<div>
+    <input type="button" value="Прикажи" onclick="prikazi()">
+</div>
+
+
+<div id="container">
+
+</div>
+
+</body>
+</html>

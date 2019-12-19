@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadaca1</title>
+
+
+    <style type="text/css">
+        label {
+            width: 83px;
+            display: inline-block;
+        }
+        input[type=button]{
+            position: relative;
+            width: 70px;
+            left: 15%;
+        }
+        div {
+            margin-bottom: 10px;
+        }
+        table, td, th {
+            border: 1px solid black;
+
+        }
+    </style>
+
+    <script>
+
+        function Student(ime,prezime,indeks,predmet,ocena){
+            this.ime = ime;
+            this.prezime=prezime;
+            this.indeks = indeks;
+            this.predmet = predmet;
+            this.ocena = ocena;
+        }
+
+        let students = [];
+
+        function vnesi(){
+            let tableRef = document.getElementById("ocenki").getElementsByTagName("tbody")[0];
+            let ime = document.getElementById("ime").value;
+            let prezime = document.getElementById("prezime").value;
+            let indeks = document.getElementById("indeks").value;
+            let predmet = document.getElementById("predmet").value;
+            let ocena = document.getElementById("ocena").value;
+
+            if (ime == "" || prezime=="" || indeks=="" || predmet == "" || ocena == ""){
+                alert("Site polinja se zadolzitelni!!!");
+                return;
+            }
+
+            let student = new Student(ime,prezime,indeks,predmet,ocena);
+            students.push(student);
+
+            var newRow = tableRef.insertRow(tableRef.rows.length);
+            var cellIme = newRow.insertCell();
+            var cellPrezime = newRow.insertCell();
+            var cellIndeks = newRow.insertCell();
+            var cellPredmet = newRow.insertCell();
+            var cellOcena = newRow.insertCell();
+
+            cellIme.innerHTML = student.ime;
+            cellPrezime.innerHTML = student.prezime;
+            cellIndeks.innerHTML = student.indeks;
+            cellPredmet.innerHTML = student.indeks;
+            cellOcena.innerHTML = student.ocena;
+
+           document.getElementById("ime").value = "";
+           document.getElementById("prezime").value = "";
+           document.getElementById("indeks").value = "";
+           document.getElementById("predmet").value = "";
+           document.getElementById("ocena").value = "5(пет)";
+
+        }
+
+
+    </script>
+</head>
+<body>
+
+<h2>Форма за внесување оцени</h2>
+
+<div>
+    <label>Име:</label>
+    <input type="text" id="ime">
+</div>
+
+<div>
+    <label>Презиме:</label>
+    <input type="text" id="prezime">
+</div>
+
+<div>
+    <label>Индекс:</label>
+    <input type="text" id="indeks">
+</div>
+
+<div>
+    <label>Предмет:</label>
+    <input type="text" id="predmet">
+</div>
+
+<div>
+    <label>Оцена:</label>
+    <select id="ocena">
+        <option value="5(пет)">5(пет)</option>
+        <option value="6(шест)">6(шест)</option>
+        <option value="7(седум)">7(седум)</option>
+        <option value="8(осум)">8(осум)</option>
+        <option value="9(девет)">9(девет)</option>
+        <option value="10(десет)">10(десет)</option>
+    </select>
+</div>
+
+<div>
+    <input type="button" name="add" value="Внеси" onclick="vnesi()">
+</div>
+
+<table id="ocenki">
+    <thead>
+    <th>Име</th>
+    <th>Презиме</th>
+    <th>Индекс</th>
+    <th>Предмет</th>
+    <th>Оцена</th>
+    </thead>
+
+    <tbody>
+
+    </tbody>
+</table>
+
+</body>
+</html>
